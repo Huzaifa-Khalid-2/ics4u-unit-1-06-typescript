@@ -9,7 +9,7 @@
 
 // get arguments
 //
-import { readFileSync } from "fs";
+import { readFileSync } from 'fs'
 
 /**
  * This function calculates the mean (average) value of a set.
@@ -19,12 +19,12 @@ import { readFileSync } from "fs";
  * @returns {number} mean The average of all the numbers
  */
 function meanCalculation(numberArray: number[], quantity: number): number {
-  let mean = 0;
+  let mean = 0
   for (let counter = 0; counter < quantity; counter++) {
-    mean += numberArray[counter];
+    mean += numberArray[counter]
   }
-  mean /= quantity;
-  return mean;
+  mean /= quantity
+  return mean
 }
 
 /**
@@ -35,44 +35,46 @@ function meanCalculation(numberArray: number[], quantity: number): number {
  * @returns {number} median The middle value of all the numbers
  */
 function medianCalculation(numberArray: number[], quantity: number): number {
-  let median = 0;
+  let median = 0
 
   const orderedArray = numberArray.sort(function (a, b) {
-    return a - b;
-  });
+    return a - b
+  })
 
   if (quantity % 2 === 0) {
-    median =
-      (orderedArray[quantity / 2] + orderedArray[(quantity - 1) / 2]) / 2;
+    median = (orderedArray[quantity / 2] + orderedArray[(quantity - 1) / 2]) / 2
   } else {
-    median = orderedArray[(quantity - 1) / 2];
+    median = orderedArray[(quantity - 1) / 2]
   }
-  return median;
+  return median
 }
 
 // Change to desired text file
-const filePath = "./set2.txt";
+const filePath = './set2.txt'
 
 // Constants
-const numberArray = [];
-const file = readFileSync(filePath, "utf8");
-const textArray = file.split(/\r?\n/);
+const numberArray = []
+const file = readFileSync(filePath, 'utf8')
+const textArray = file.split(/\r?\n/)
 
-console.log("This program calculates the means and media from a txt file.");
-console.log(`The current file being used is ${String(filePath)}.\n`);
+// UNCOMMENT THIS IF YOUR TEXT FILE HAS A BLANK CHAR AT THE END
+// textArray.pop()
+
+console.log('This program calculates the means and media from a txt file.')
+console.log(`The current file being used is ${String(filePath)}.\n`)
 
 // Process
 for (let counter = 0; counter < textArray.length; counter++) {
-  numberArray.push(Number(textArray[counter]));
+  numberArray.push(Number(textArray[counter]))
 }
-const quantity = numberArray.length;
+const quantity = numberArray.length
 
 // Run Functions
-const mean = meanCalculation(numberArray, quantity);
-const median = medianCalculation(numberArray, quantity);
+const mean = meanCalculation(numberArray, quantity)
+const median = medianCalculation(numberArray, quantity)
 
 // Output
-console.log(`The mean is ${String(mean)}.`);
-console.log(`The median is ${String(median)}.`);
+console.log(`The mean is ${String(mean)}.`)
+console.log(`The median is ${String(median)}.`)
 
-console.log("\nDone.");
+console.log('\nDone.')
